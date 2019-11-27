@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Search from "./components/SearchComponent/search";
+import ContactList from "./components/ContactList/contactList";
+
+const App=()=>{
+    return(
+        <div className="container bootstrap snippet">
+            <Search></Search>
+            <ContactList></ContactList>
+        </div>
+    )
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

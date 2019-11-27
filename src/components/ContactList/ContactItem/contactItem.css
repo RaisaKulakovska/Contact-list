@@ -1,0 +1,25 @@
+.panel ul li{
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.panel{
+    background-color: #fff;
+}
+.panel-body {
+    padding: 15px;
+}
+.item{
+    max-width: 70%;
+}
+.btn-group-sm>.btn, .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+a.btn{
+    margin-left: 5px;
+}
+img.img-circle{
+    border-radius: 50%;
+}
