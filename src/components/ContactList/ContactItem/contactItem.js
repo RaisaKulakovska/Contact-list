@@ -1,7 +1,9 @@
 import React from "react";
 import "./contactItem.css";
 
-const ContactItem=()=>{
+const ContactItem=({avatar, description, name, gender})=>{
+
+     let url=`https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
     return(
         <div className="row justify-content-center">
             <div className="col item mt-3">
@@ -9,7 +11,7 @@ const ContactItem=()=>{
                     <div className="panel-body p-t-12">
                         <div className="media-main">
                             <a className="pull-left" href="#">
-                                <img className="thumb-lg img-circle bx-s" src="https://bootdey.com/img/Content/user_1.jpg" alt=""/>
+                                <img className="thumb-lg img-circle bx-s" src={url} alt=""/>
                             </a>
                             <div className="pull-right btn-group-sm">
                                 <a href="#" className="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
@@ -20,8 +22,8 @@ const ContactItem=()=>{
                                 </a>
                             </div>
                             <div className="info">
-                                <h4>Jonathan Smith</h4>
-                                <p className="text-muted">Graphics Designer</p>
+                                <h4>{name}</h4>
+                                <p className="text-muted">{description}</p>
                             </div>
                         </div>
                         <div className="clearfix"></div>
