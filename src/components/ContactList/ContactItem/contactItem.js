@@ -1,9 +1,9 @@
 import React from "react";
 import "./contactItem.css";
 
-const ContactItem=({avatar, description, name, gender})=>{
+const ContactItem=({avatar, description, name, gender, Facebook, Twitter, LinkedIn, Skype, e_mail})=>{
 
-     let url=`https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
+     let url=`https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;     
     return(
         <div className="row justify-content-center">
             <div className="col item mt-3">
@@ -30,19 +30,19 @@ const ContactItem=({avatar, description, name, gender})=>{
                         <hr/>
                         <ul className="social-links list-inline p-b-10">
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} data-original-title="Skype"><i class="fa fa-skype"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="#" data-original-title="Message"><i class="fa fa-envelope-o"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} data-original-title="Message"><i class="fa fa-envelope-o"></i></a>
                             </li>
                         </ul>
                     </div>
