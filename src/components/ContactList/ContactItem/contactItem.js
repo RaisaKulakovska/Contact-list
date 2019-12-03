@@ -30,19 +30,19 @@ const ContactItem=({avatar, description, name, gender, Facebook, Twitter, Linked
                         <hr/>
                         <ul className="social-links list-inline p-b-10">
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} target="_blank" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} target="_blank" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} target="_blank" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} target="_blank" data-original-title="Skype"><i class="fa fa-skype"></i></a>
                             </li>
                             <li>
-                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} data-original-title="Message"><i class="fa fa-envelope-o"></i></a>
+                                <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} target="_blank" data-original-title="Message"><i class="fa fa-envelope-o"></i></a>
                             </li>
                         </ul>
                     </div>
