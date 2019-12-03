@@ -23,3 +23,6 @@ a.btn{
 img.img-circle{
     border-radius: 50%;
 }
+.bord{
+    border:1px solid black;
+}
