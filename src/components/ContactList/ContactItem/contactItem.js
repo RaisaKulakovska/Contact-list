@@ -13,10 +13,10 @@ class ContactItem extends React.Component {
         Skype: this.props.Skype,
         e_mail: this.props.e_mail,
         btnStatus: false,
-        borderStatus: false,
+        borderStatus: this.props.favorite,
         starStatus: this.props.favorite,
         iconStatus: false,
-        PanelBackgroundStatus: false,
+        PanelBackgroundStatus: this.props.favorite,
          
     };
 
@@ -70,7 +70,7 @@ class ContactItem extends React.Component {
             btnStyle = "btn btn-outline-danger true col-2 mr-4";
         }
 
-        let borderStyle = "panel-body p-t-12";
+        let borderStyle = "panel-body p-t-12 border-transp";
         
         if (this.state.borderStatus) {
             //console.log('border exist')
@@ -86,11 +86,7 @@ class ContactItem extends React.Component {
         if (this.state.PanelBackgroundStatus) {
             PanelBackgroundStyle = "panel bcg-colored panel-border"
         }
-        let a_iconStyle;
-        if (this.state.iconStatus) {
-            console.log("icon works")
-            a_iconStyle = "a_icon-big";
-        }
+        
         let borderFuther=""
         return (
             <div className="row justify-content-center">
@@ -121,21 +117,21 @@ class ContactItem extends React.Component {
                             </div>
                             <div className="clearfix"></div>
                             <hr />
-                            <ul className="social-links list-inline p-b-10">
+                            <ul className="social-links list-inline pt-3">
                                 <li >
-                                    <a onMouseEnter={this.IconOver} onMouseLeave={this.IconLeave} className={a_iconStyle} title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} target="_blank" data-original-title="Facebook"><i className="fa fa-facebook"  ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} target="_blank" data-original-title="Facebook"><i className="fa fa-facebook"  ></i></a>
                                 </li>
                                 <li  >
-                                    <a onMouseEnter={this.IconOver} onMouseLeave={this.IconLeave} className={a_iconStyle} title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} target="_blank" data-original-title="Twitter"><i className="fa fa-twitter {iconStyle}" ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} target="_blank" data-original-title="Twitter"><i className="fa fa-twitter {iconStyle}" ></i></a>
                                 </li>
                                 <li>
-                                    <a onMouseEnter={this.IconOver} onMouseLeave={this.IconLeave} className={a_iconStyle} title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} target="_blank" data-original-title="LinkedIn"><i className="fa fa-linkedin" ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} target="_blank" data-original-title="LinkedIn"><i className="fa fa-linkedin" ></i></a>
                                 </li>
                                 <li>
-                                    <a onMouseEnter={this.IconOver} onMouseLeave={this.IconLeave} className={a_iconStyle} title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} target="_blank" data-original-title="Skype"><i className="fa fa-skype {iconStyle}"></i></a>
+                                    <a  title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} target="_blank" data-original-title="Skype"><i className="fa fa-skype {iconStyle}"></i></a>
                                 </li>
                                 <li>
-                                    <a onMouseEnter={this.IconOver} onMouseLeave={this.IconLeave} className={a_iconStyle} title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} target="_blank" data-original-title="Message"><i className="fa fa-envelope-o {iconStyle}" ></i></a>
+                                    <a  title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} target="_blank" data-original-title="Message"><i className="fa fa-envelope-o {iconStyle}" ></i></a>
                                 </li>
                             </ul>
                             <div className="row d-flex flex-row-reverse">
