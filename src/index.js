@@ -31,24 +31,36 @@ import ContactList from "./components/ContactList/contactList";
         ]
      } 
     
-     onDelete =(id)=>{
-          
+     onDelete =(id)=>{          
           const index = this.state.List.findIndex(elem => elem.id === id);
+          console.log(index);
           let ListNew=[];
           let counter=0;
           for(let i =0;i<this.state.List.length;i++){               
                if(i!=index){
                     ListNew[counter]=this.state.List[i];
                     counter++;
-               }
-               
+               }               
           }
           this.setState(()=>{
           return{
                List: ListNew               
           }
      })  
-     }  
+     } 
+      FavoriteNewF=(id)=>{
+          const index = this.state.List.findIndex(elem => elem.id === id);          
+          for(let i =0;i<this.state.List.length;i++){
+               if(i==index){
+               this.setState({favorite:!this.state.favorite})
+               console.log("fav");
+               }
+          }    
+     
+          return{
+
+          }
+     } 
     render(){    
     return(
         <div className="container bootstrap snippet">
@@ -56,6 +68,7 @@ import ContactList from "./components/ContactList/contactList";
             <ContactList 
                ContactList={this.state.List}
                onDelete={this.onDelete}
+               FavoriteNewF={this.FavoriteNewF}
           >
             </ContactList>
         </div>

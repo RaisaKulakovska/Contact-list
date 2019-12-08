@@ -3,8 +3,8 @@ import "./contactList.css";
 import ContactItem from "./ContactItem/contactItem";
 
 
-const ContactList=({ContactList, onDelete})=>{
-    console.log("Array",ContactList);
+const ContactList=({ContactList, onDelete, FavoriteNewF})=>{
+    console.log("Array ContactList:",ContactList);
     const ListItem=ContactList.map((item)=>{       
         return <ContactItem 
         key={item.id}
@@ -18,7 +18,7 @@ const ContactList=({ContactList, onDelete})=>{
         Skype={item.Skype}
         e_mail={item.e_mail}
         onDelete={()=>onDelete(item.id)}
-        favorite={item.favorite}
+       FavoriteNewF={()=>FavoriteNewF(item.id)}
         >
         </ContactItem>
     })

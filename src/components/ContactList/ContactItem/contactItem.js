@@ -12,14 +12,12 @@ class ContactItem extends React.Component {
         LinkedIn: this.props.LinkedIn,
         Skype: this.props.Skype,
         e_mail: this.props.e_mail,
-        btnStatus: false,
-        borderStatus: this.props.favorite,
-        starStatus: this.props.favorite,
+        btnStatus: false,        
         iconStatus: false,
-        PanelBackgroundStatus: this.props.favorite,
-         
-    };
+        borderStatus: this.props.favorite,
 
+        starStatus:  this.props.favorite,                 
+    };
     RandomAva = () => {
         const newAvatar = Math.floor(Math.random() * 100);
         this.setState({
@@ -27,67 +25,35 @@ class ContactItem extends React.Component {
             btnStatus: !this.state.btnStatus
         })
     }
-
     BorderShow = () => {
         this.setState({
             borderStatus: true
         });
     }
     BorderHide = () => {
-
         this.setState({
             borderStatus: false
         });
     }
-    PressStar = () => {
-        this.setState({
-            starStatus: !this.state.starStatus,
-            PanelBackgroundStatus: !this.state.PanelBackgroundStatus
-        })
-    }
-    IconOver = () => {
-        this.setState({
-            iconStatus: true
-        })
-    }
-    IconLeave = () => {
-        this.setState({
-            iconStatus: false
-        })
-    }
-    PanelBackgroundOn = () => {
-
-    }
     render() {
-
         const { name, description, avatar, gender, Facebook, Twitter, LinkedIn, Skype, e_mail } = this.state;
-
         let btnStyle = "btn btn-outline-info true col-2 mr-4";
-
         let url = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
-
         if (this.state.btnStatus) {
             btnStyle = "btn btn-outline-danger true col-2 mr-4";
         }
-
-        let borderStyle = "panel-body p-t-12 border-transp";
-        
-        if (this.state.borderStatus) {
-            //console.log('border exist')
+        let borderStyle = "panel-body p-t-12 border-transp"; 
+        if (this.state.borderStatus) {            
             borderStyle = "panel-body p-t-12 border"
-        }
-
-        let starStyle = "fa fa-star"
-        if (this.state.starStatus) {
-            //console.log('star exist')
-            starStyle = "fa fa-star star-pressed"
-        }
+        }         
+        let starStyle = "fa fa-star";
         let PanelBackgroundStyle = "panel";
-        if (this.state.PanelBackgroundStatus) {
+        if (this.state.starStatus)
+         {
+           console.log('star&border exist')
+            starStyle = "fa fa-star star-pressed"
             PanelBackgroundStyle = "panel bcg-colored panel-border"
-        }
-        
-        let borderFuther=""
+        } 
         return (
             <div className="row justify-content-center">
                 <div className="col item mt-3">
@@ -136,14 +102,14 @@ class ContactItem extends React.Component {
                             </ul>
                             <div className="row d-flex flex-row-reverse">
                                 <button className={btnStyle} onClick={this.RandomAva}>Random</button>
-                                <div className="col-1 star-cont pt-1" onClick={this.PressStar}>
+                                <div className="col-1 star-cont pt-1" onClick={this.props.FavoriteNewF}/>
                                     <i class={starStyle}></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            
         )
     }
 }
