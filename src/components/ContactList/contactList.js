@@ -3,7 +3,7 @@ import "./contactList.css";
 import ContactItem from "./ContactItem/contactItem";
 import Search from "../SearchComponent/search";
 
-const ContactList = ({ ContactList, onDelete }) => {
+const ContactList = ({ ContactList, onDelete, FavoriteNewF}) => {
     console.log("Array", ContactList);
     const ListItem = ContactList.map((item) => {
         return <ContactItem
@@ -18,16 +18,15 @@ const ContactList = ({ ContactList, onDelete }) => {
             Skype={item.Skype}
             e_mail={item.e_mail}
             onDelete={() => onDelete(item.id)}
+            FavoriteNewF={()=>FavoriteNewF(item.id)}
             favorite={item.favorite}
         >
         </ContactItem>
     })
     return (
         <Fragment>
-            <Search></Search>
-            {/* <h2>Contact List</h2> */}
+            <Search></Search>          
             {ListItem}
-
         </Fragment>
     )
 }

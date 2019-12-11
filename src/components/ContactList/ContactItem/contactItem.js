@@ -14,9 +14,10 @@ class ContactItem extends React.Component {
         e_mail: this.props.e_mail,
         btnStatus: false,        
         iconStatus: false,
+        favorite: this.props.favorite,
         borderStatus: this.props.favorite,
-
-        starStatus:  this.props.favorite,                 
+        id: this.props.id,
+        starStatus:  this.props.favorite,                         
     };
     RandomAva = () => {
         const newAvatar = Math.floor(Math.random() * 100);
@@ -36,7 +37,7 @@ class ContactItem extends React.Component {
         });
     }
     render() {
-        const { name, description, avatar, gender, Facebook, Twitter, LinkedIn, Skype, e_mail } = this.state;
+        const { name, description, avatar, gender, Facebook, Twitter, LinkedIn, Skype, e_mail, } = this.state;
         let btnStyle = "btn btn-outline-info true col-2 mr-4";
         let url = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
         if (this.state.btnStatus) {
@@ -48,9 +49,8 @@ class ContactItem extends React.Component {
         }         
         let starStyle = "fa fa-star";
         let PanelBackgroundStyle = "panel";
-        if (this.state.starStatus)
-         {
-           console.log('star&border exist')
+        if (this.props.favorite)
+         {          
             starStyle = "fa fa-star star-pressed"
             PanelBackgroundStyle = "panel bcg-colored panel-border"
         } 
@@ -102,14 +102,14 @@ class ContactItem extends React.Component {
                             </ul>
                             <div className="row d-flex flex-row-reverse">
                                 <button className={btnStyle} onClick={this.RandomAva}>Random</button>
-                                <div className="col-1 star-cont pt-1" onClick={this.props.FavoriteNewF}/>
-                                    <i class={starStyle}></i>
+                                <div className="col-1 star-cont pt-1">
+                                    <i onClick={this.props.FavoriteNewF} class={starStyle}></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            
+            </div>
         )
     }
 }

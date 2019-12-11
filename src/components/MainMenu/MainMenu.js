@@ -1,4 +1,5 @@
 import React from "react";
+import "./MainMenu/MainMenu.css"
 import {BrowserRouter as Router, Link} from "react-router-dom";
 
 const MainMenu=()=>{
@@ -9,10 +10,10 @@ const MainMenu=()=>{
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="/About">About</a>
+                    <Link to="/About">About</Link>
                 </li>
                 <li>
-                    <a href="/AddContact">Add Contact</a>
+                    <Link to="/AddContact">Add Contact</Link>
                 </li>
             </ul>
         </nav>
