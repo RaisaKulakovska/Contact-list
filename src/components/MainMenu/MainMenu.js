@@ -14,7 +14,7 @@ const MainMenu = () => {
                         <Link to="/About" className="nav-link">About</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/AddContact" className="nav-link">Add Contact</Link>
+                        <Link to="/add" className="nav-link">Add Contact</Link>
                     </li>
                 </ul>
             </div>

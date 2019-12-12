@@ -14,97 +14,98 @@ import MainMenu from "./components/MainMenu/MainMenu"
 
 
 class App extends Component {
+     id:100;
      state = {
           List: [
                {
-                    id: 1, 
+                    id: 1,
                     name: "Jack Sparrow",
-                    description: "Captain", 
-                    avatar: 20, 
+                    description: "Captain",
+                    avatar: 20,
                     gender: "men",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: false
                },
                {
-                    id: 2, 
-                    name: "Cris Nollan", 
-                    description: "Produser", 
-                    avatar: 12, 
+                    id: 2,
+                    name: "Cris Nollan",
+                    description: "Produser",
+                    avatar: 12,
                     gender: "men",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: true
                },
                {
-                    id: 3, 
-                    name: "Arnold Swarzeneger", 
-                    description: "Terminator", 
-                    avatar: 14, 
+                    id: 3,
+                    name: "Arnold Swarzeneger",
+                    description: "Terminator",
+                    avatar: 14,
                     gender: "men",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: false
                },
                {
-                    id: 4, 
-                    name: "Nelly Teylor", 
-                    description: "Teacher", 
-                    avatar: 88, 
+                    id: 4,
+                    name: "Nelly Teylor",
+                    description: "Teacher",
+                    avatar: 88,
                     gender: "women",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: true
                },
                {
-                    id: 5, 
-                    name: "Jack London", 
-                    description: "Poet", 
-                    avatar: 80, 
+                    id: 5,
+                    name: "Jack London",
+                    description: "Poet",
+                    avatar: 80,
                     gender: "men",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: false
                },
                {
-                    id: 6, 
-                    name: "Nick Nikels", 
-                    description: "Polissman", 
-                    avatar: 60, 
+                    id: 6,
+                    name: "Nick Nikels",
+                    description: "Polissman",
+                    avatar: 60,
                     gender: "men",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: false
                },
                {
-                    id: 7, 
-                    name: "Ella Broun", 
-                    description: "Nurse", 
-                    avatar: 50, 
+                    id: 7,
+                    name: "Ella Broun",
+                    description: "Nurse",
+                    avatar: 50,
                     gender: "women",
-                    Facebook: "https://www.facebook.com/", 
-                    Twitter: "https://twitter.com/", 
+                    Facebook: "https://www.facebook.com/",
+                    Twitter: "https://twitter.com/",
                     LinkedIn: "https://www.linkedin.com/",
-                    Skype: "https://www.skype.com/", 
-                    e_mail: "https://mail.google.com/", 
+                    Skype: "https://www.skype.com/",
+                    e_mail: "https://mail.google.com/",
                     favorite: false
                },
           ]
@@ -128,18 +129,35 @@ class App extends Component {
                }
           })
      }
-     FavoriteNewF=(id)=>{
-          const index = this.state.List.findIndex(elem => elem.id === id);          
-          
-               const ListNew = this.state.List.slice();  
-                             
-               ListNew[index].favorite = !ListNew[index].favorite;
-               
-            
-     
+     FavoriteNewF = (id) => {
+          const index = this.state.List.findIndex(elem => elem.id === id);
+
+          const ListNew = this.state.List.slice();
+
+          ListNew[index].favorite = !ListNew[index].favorite;
+
+
+
           this.setState(() => {
                return {
                     List: ListNew
+               }
+          })
+     }
+     onAddNewContact = (name, description, avatar, gender) => {
+          this.id++;
+          const newContact={
+               id:this.id,
+               name: name, 
+               description: description,
+               avatar: avatar,
+               gender: gender,
+               favorite: false
+          };
+          const newContactArr=[...this.state.List, newContact];
+          this.setState(()=>{
+               return{
+                    List: newContactArr
                }
           })
      }
@@ -147,7 +165,7 @@ class App extends Component {
           return (
                <Router>
                     <div className="container bootstrap snippet ">
-                        <MainMenu></MainMenu> 
+                         <MainMenu></MainMenu>
                          {/* <ContactList
                               ContactList={this.state.List}
                               onDelete={this.onDelete}
@@ -155,7 +173,10 @@ class App extends Component {
                          ></ContactList> */}
                          <Switch>
                               <Route path="/about" exact component={About}></Route>
-                              <Route path="/AddContact" exact component={AddContact}></Route>
+                              <Route path="/add" exact component={() => (
+                                   <AddContact AddNewContact={this.onAddNewContact} />
+                              )}>
+                              </Route>
                               <Route path="/Edit" exact component={Edit}></Route>
 
 

@@ -19,7 +19,7 @@ const ContactList = ({ ContactList, onDelete, FavoriteNewF}) => {
             e_mail={item.e_mail}
             onDelete={() => onDelete(item.id)}
             FavoriteNewF={()=>FavoriteNewF(item.id)}
-            favorite={item.favorite}
+            favorite={item.favorite}            
         >
         </ContactItem>
     })
