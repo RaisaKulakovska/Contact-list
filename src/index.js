@@ -116,7 +116,7 @@ class App extends Component {
           let ListNew = [];
           let counter = 0;
           for (let i = 0; i < this.state.List.length; i++) {
-               if (i != index) {
+               if (i !== index) {
                     ListNew[counter] = this.state.List[i];
                     counter++;
                }
@@ -146,7 +146,7 @@ class App extends Component {
      render() {
           return (
                <Router>
-                    <div className="container bootstrap snippet">
+                    <div className="container bootstrap snippet ">
                         <MainMenu></MainMenu> 
                          {/* <ContactList
                               ContactList={this.state.List}
