@@ -28,15 +28,12 @@ class AddContact extends React.Component {
         e.preventDefault();
         const { name, description, avatar, gender } = this.state;
         this.props.AddNewContact(name, description, avatar, gender);
-
     };
     getGender = (e) => {
         this.setState({
             gender: e.target.value
         })
     }
-
-
     render() {
         return (
             <form onSubmit={this.onSubmit}>
@@ -60,16 +57,7 @@ class AddContact extends React.Component {
                     placeholder="Enter a # of avatar"
                     onChange={this.getAva}
                 />
-                <br />
-               
-                    <input
-                        type="checkbox"
-                        name="favorite"
-                        checked={this.state.favorite}
-                        onChange={this.handleChange}
-                    />Is favorite?
-            
-                <br /><br />
+                <br /> <br />
                 <label>Select gender</label>
                 <select
                     value={this.state.gender}
@@ -80,6 +68,7 @@ class AddContact extends React.Component {
                     <option value="female">Female</option>
                     </select>
                     <button type="submit" class="btn btn-primary btn-lg">ADD CONTACT</button>
+                    <br /> <br />
             </form>
                 )
             }

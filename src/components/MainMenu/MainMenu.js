@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const MainMenu = () => {
     return (
+        
         <nav className="navbar navbar-fixed-top navbar-light main-nav">
             <div className="container justify-content-center ">
                 <ul className="nav navbar-nav ">
@@ -20,5 +21,6 @@ const MainMenu = () => {
             </div>
         </nav>
     )
+
 };
 export default MainMenu

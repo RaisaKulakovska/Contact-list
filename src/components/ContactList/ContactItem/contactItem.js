@@ -1,5 +1,6 @@
 import React from "react";
 import "./contactItem.css";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class ContactItem extends React.Component {
     state = {
@@ -37,7 +38,7 @@ class ContactItem extends React.Component {
         });
     }
     render() {
-        const { name, description, avatar, gender, Facebook, Twitter, LinkedIn, Skype, e_mail, } = this.state;
+        const { name, description, avatar, gender, Facebook, Twitter, LinkedIn, Skype, e_mail} = this.state;
         let btnStyle = "btn btn-outline-info true col-2 mr-4";
         let url = `https://randomuser.me/api/portraits/${gender}/${avatar}.jpg`;
         if (this.state.btnStatus) {
@@ -67,9 +68,9 @@ class ContactItem extends React.Component {
                                     <img className="thumb-lg img-circle bx-s" src={url} alt="" />
                                 </a>
                                 <div className="pull-right btn-group-sm">
-                                    <a href="#" className="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                                    <Link to="/Edit" className="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
                                         <i className="fa fa-pencil"></i>
-                                    </a>
+                                    </Link>
                                     <a href="#" className="btn btn-danger tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"
                                     onClick={this.props.onDelete}
                                     >
@@ -85,25 +86,25 @@ class ContactItem extends React.Component {
                             <hr />
                             <ul className="social-links list-inline pt-3">
                                 <li >
-                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Facebook} target="_blank" data-original-title="Facebook"><i className="fa fa-facebook"  ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" className="tooltips" href={Facebook} target="_blank" data-original-title="Facebook"><i className="fa fa-facebook"  ></i></a>
                                 </li>
                                 <li  >
-                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Twitter} target="_blank" data-original-title="Twitter"><i className="fa fa-twitter {iconStyle}" ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" className="tooltips" href={Twitter} target="_blank" data-original-title="Twitter"><i className="fa fa-twitter {iconStyle}" ></i></a>
                                 </li>
                                 <li>
-                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={LinkedIn} target="_blank" data-original-title="LinkedIn"><i className="fa fa-linkedin" ></i></a>
+                                    <a title="" data-placement="top" data-toggle="tooltip" className="tooltips" href={LinkedIn} target="_blank" data-original-title="LinkedIn"><i className="fa fa-linkedin" ></i></a>
                                 </li>
                                 <li>
-                                    <a  title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={Skype} target="_blank" data-original-title="Skype"><i className="fa fa-skype {iconStyle}"></i></a>
+                                    <a  title="" data-placement="top" data-toggle="tooltip" className="tooltips" href={Skype} target="_blank" data-original-title="Skype"><i className="fa fa-skype {iconStyle}"></i></a>
                                 </li>
                                 <li>
-                                    <a  title="" data-placement="top" data-toggle="tooltip" class="tooltips" href={e_mail} target="_blank" data-original-title="Message"><i className="fa fa-envelope-o {iconStyle}" ></i></a>
+                                    <a  title="" data-placement="top" data-toggle="tooltip" className="tooltips" href={e_mail} target="_blank" data-original-title="Message"><i className="fa fa-envelope-o {iconStyle}" ></i></a>
                                 </li>
                             </ul>
                             <div className="row d-flex flex-row-reverse">
                                 <button className={btnStyle} onClick={this.RandomAva}>Random</button>
                                 <div className="col-1 star-cont pt-1">
-                                    <i onClick={this.props.FavoriteNewF} class={starStyle}></i>
+                                    <i onClick={this.props.FavoriteNewF} className={starStyle}></i>
                                 </div>
                             </div>
                         </div>

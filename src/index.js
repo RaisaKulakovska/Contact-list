@@ -10,7 +10,8 @@ import About from "./components/About/about";
 import AddContact from "./components/AddContact/AddContact";
 import NotFound from "./components/NotFounf/NotFound";
 import Edit from "./components/Edit/edit";
-import MainMenu from "./components/MainMenu/MainMenu"
+import MainMenu from "./components/MainMenu/MainMenu";
+import uuid from "uuid";
 
 
 class App extends Component {
@@ -108,9 +109,41 @@ class App extends Component {
                     e_mail: "https://mail.google.com/",
                     favorite: false
                },
-          ]
+          ],
+          List1:[]
+     };
+     Editeding=id=>{
+          this.state.ListEdited = [];
+          const index = this.state.List.findIndex(elem => elem.id === id);          
+          const ItemToEdit=this.state.List[index];
+          this.ItemToEdit={id:uuid()};
+          const ListUpdated=[...this.state.List1, ItemToEdit];
+          this.state.List.splice(index, 1,);
+          this.setState(() => {
+               return {
+                    List1: ItemToEdit
+               }
+          })
+         
+     };          
+     onEdit=(id,name, description, avatar, gender)=>{
+          const index = this.state.List.findIndex(elem => elem.id === id); 
+          const EditedContact={
+               name: name, 
+               description: description,
+               avatar: avatar,
+               gender: gender,
+               favorite: this.state.ListEdited[0].favorite,
+               id: this.state.ListEdited[0].id
+          }
+          console.log(this.state.List1);
+          const ListUpdated=[...this.state.List, EditedContact]; 
+          this.setState(() => {
+               return {
+               List: ListUpdated
+               }
+          })
      }
-
      onDelete = (id) => {
 
           const index = this.state.List.findIndex(elem => elem.id === id);
@@ -161,6 +194,7 @@ class App extends Component {
                }
           })
      }
+  
      render() {
           return (
                <Router>
@@ -174,11 +208,13 @@ class App extends Component {
                          <Switch>
                               <Route path="/about" exact component={About}></Route>
                               <Route path="/add" exact component={() => (
-                                   <AddContact AddNewContact={this.onAddNewContact} />
+                                   <AddContact AddNewContact={this.onAddNewContact}/>
                               )}>
                               </Route>
-                              <Route path="/Edit" exact component={Edit}></Route>
-
+                              <Route path="/edit" exact component={()=>(
+                                   <Edit EditContact={this.onEdit}/> 
+                              )}>
+                              </Route>
 
                               <Route
                                    path="/"
