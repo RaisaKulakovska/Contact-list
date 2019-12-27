@@ -2,11 +2,12 @@ import React from "react";
 
 class Edit extends React.Component{
     state = {
-        name: this.name,
-        description: this.description,
-        avatar: this.avatar,
-        gender: this.gender,
-        id: this.id
+        id: this.props.EditContact.id,
+        name: this.props.EditContact.name,
+        description: this.props.EditContact.description,
+        avatar: this.props.EditContact.avatar,
+        gender: this.props.EditContact.gender,
+        favorite: this.props.EditContact.favorite
     }
     editName = (e) => {
         this.setState({
@@ -22,82 +23,62 @@ class Edit extends React.Component{
         this.setState({
             avatar: e.target.value
         })
-    }
-    
+    }    
     editGender = (e) => {
         this.setState({
             gender: e.target.value
         })
     }
-    getId = (e) => {
+    getId = () => {
         this.setState({
-            id: this.id
+            id: this.state.id
         })
     }
-    onSave = (e) => {        
-        const { name, description, avatar, gender } = this.state;
-        this.getId();
-        e.preventDefault();
-        this.props.onEdit (name, description, avatar, gender);
-    };
-    render(){
-        this.props.Editeding.map(item => {
-            this.name = item.name;
-            this.description = item.description;
-            this.avatar = item.avatar;
-            this.gender = item.gender;
-            this.id = item.id;
-          });
-
-          if (this.state.gender === undefined) {
-            this.setState({
-                gender: this.gender
-            })           
-          }
-          if (this.state.avatar === undefined) {
-            this.setState({
-                avatar: this.avatar
-            })           
-          }
-
-          //let url = `https://randomuser.me/api/portraits/${this.state.gender}/${this.state.avatar}.jpg`;
+    onSubmit = (e) => { 
+        e.preventDefault();       
+        const {id, name, description, avatar, gender, favorite } = this.state;           
+        this.props.EditContact (id, name, description, avatar, gender, favorite);
+    }
+    render(){        
         return(            
-            <form onSave={this.onSave}
+            <form onSubmit={this.onSubmit}
             >
                 <input
                     type="text"
                     name="name"
-                    placeholder={this.name}
+                    placeholder={this.state.name}
                     onChange={this.getName}
                 />
                 <br />
                 <input
                     type="text"
                     name="description"
-                    placeholder={this.name}
+                    placeholder={this.state.description}
                     onChange={this.getDescrip}
                 />
                 <br />
                 <input
                     type="text"
                     name="avatar"
-                    placeholder={this.name}
+                    placeholder={this.state.avatar}
                     onChange={this.getAva}
                 />
                 <br /> <br />
                 <label>Select gender</label>
                 <select
                     value={this.state.gender}
-                    onChange={this.getGender}
+                    onChange={this.editGender}
                     name="gender">
 
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     </select>
-                    <button type="save" className="btn btn-primary btn-lg">SAVE</button>
+                    <button type="submit" className="btn btn-primary btn-lg">SAVE</button>
                     <br /> <br />
             </form>
         )
     }
+
 }
 export default Edit;
+

@@ -68,7 +68,12 @@ class ContactItem extends React.Component {
                                     <img className="thumb-lg img-circle bx-s" src={url} alt="" />
                                 </a>
                                 <div className="pull-right btn-group-sm">
-                                    <Link to="/Edit" className="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                                    <Link to="/Edit" 
+                                    className="btn btn-success tooltips" data-placement="top" 
+                                    data-toggle="tooltip" 
+                                    data-original-title="Edit"
+                                    onClick={this.props.GetContactID}
+                                    >
                                         <i className="fa fa-pencil"></i>
                                     </Link>
                                     <a href="#" className="btn btn-danger tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"

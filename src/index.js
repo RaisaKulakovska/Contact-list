@@ -15,7 +15,7 @@ import uuid from "uuid";
 
 
 class App extends Component {
-     id:100;
+     id: 100;
      state = {
           List: [
                {
@@ -110,42 +110,64 @@ class App extends Component {
                     favorite: false
                },
           ],
-          List1:[]
+          singleContactArr: {
+
+          }
+
      };
-     Editeding=id=>{
-          this.state.ListEdited = [];
-          const index = this.state.List.findIndex(elem => elem.id === id);          
-          const ItemToEdit=this.state.List[index];
-          this.ItemToEdit={id:uuid()};
-          const ListUpdated=[...this.state.List1, ItemToEdit];
-          this.state.List.splice(index, 1,);
-          this.setState(() => {
-               return {
-                    List1: ItemToEdit
+
+
+     GetContactID = id => {
+          const index = this.state.List.findIndex(elem => elem.id === id);
+          for (let i = 0; i < this.state.List.length; i++) {
+               if (i === index) {
+                    let singleContact = {
+                         id: this.id,
+                         name: this.state.List[i].name,
+                         description: this.state.List[i].description,
+                         avatar: this.state.List[i].avatar,
+                         gender: this.state.List[i].gender,
+                         favorite: this.state.List[i].favorite
+                    };
+                    this.setState({
+                         singleContactArr: singleContact
+                    });
                }
+          }
+     };
+     EditContact = (id, name, description, avatar, gender) => {
+          const index = this.state.List.findIndex(elem => elem.id === id);
+          const filferedList = this.state.List.filter(item => item.id === !index);
+          console.log(filferedList);
+          const selectedItem = this.state.List.find(item => item.id === index)
+          console.log(selectedItem);
+          this.setState({
+               List: filferedList,
+               // id: selectedItem.id,
+               // name: selectedItem.name,
+               // description: selectedItem.description,
+               // avatar: selectedItem.avatar,
+               // gender: selectedItem.gender
           })
-         
-     };          
-     onEdit=(id,name, description, avatar, gender)=>{
-          const index = this.state.List.findIndex(elem => elem.id === id); 
-          const EditedContact={
-               name: name, 
+     }
+     onAddNewContact = (name, description, avatar, gender) => {
+          this.id++;
+          const newContact = {
+               id: this.id,
+               name: name,
                description: description,
                avatar: avatar,
                gender: gender,
-               favorite: this.state.ListEdited[0].favorite,
-               id: this.state.ListEdited[0].id
-          }
-          console.log(this.state.List1);
-          const ListUpdated=[...this.state.List, EditedContact]; 
+               favorite: false
+          };
+          const newContactArr = [...this.state.List, newContact];
           this.setState(() => {
                return {
-               List: ListUpdated
+                    List: newContactArr
                }
           })
      }
      onDelete = (id) => {
-
           const index = this.state.List.findIndex(elem => elem.id === id);
           let ListNew = [];
           let counter = 0;
@@ -154,7 +176,6 @@ class App extends Component {
                     ListNew[counter] = this.state.List[i];
                     counter++;
                }
-
           }
           this.setState(() => {
                return {
@@ -164,37 +185,14 @@ class App extends Component {
      }
      FavoriteNewF = (id) => {
           const index = this.state.List.findIndex(elem => elem.id === id);
-
           const ListNew = this.state.List.slice();
-
           ListNew[index].favorite = !ListNew[index].favorite;
-
-
-
           this.setState(() => {
                return {
                     List: ListNew
                }
           })
      }
-     onAddNewContact = (name, description, avatar, gender) => {
-          this.id++;
-          const newContact={
-               id:this.id,
-               name: name, 
-               description: description,
-               avatar: avatar,
-               gender: gender,
-               favorite: false
-          };
-          const newContactArr=[...this.state.List, newContact];
-          this.setState(()=>{
-               return{
-                    List: newContactArr
-               }
-          })
-     }
-  
      render() {
           return (
                <Router>
@@ -207,13 +205,19 @@ class App extends Component {
                          ></ContactList> */}
                          <Switch>
                               <Route path="/about" exact component={About}></Route>
-                              <Route path="/add" exact component={() => (
-                                   <AddContact AddNewContact={this.onAddNewContact}/>
-                              )}>
+                              <Route path="/add"
+                                   exact
+                                   component={() => (
+                                        <AddContact AddNewContact={this.onAddNewContact} />
+                                   )}>
                               </Route>
-                              <Route path="/edit" exact component={()=>(
-                                   <Edit EditContact={this.onEdit}/> 
-                              )}>
+                              <Route path="/edit"
+                                   exact
+                                   component={() => (
+                                        <Edit
+                                             EditContact={this.EditContact}
+                                        />
+                                   )}>
                               </Route>
 
                               <Route
@@ -224,6 +228,8 @@ class App extends Component {
                                              ContactList={this.state.List}
                                              onDelete={this.onDelete}
                                              FavoriteNewF={this.FavoriteNewF}
+                                             GetContactID={this.GetContactID}
+                                             EditContact={this.EditContact}
                                         />
                                    )}
                               ></Route>

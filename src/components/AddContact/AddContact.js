@@ -24,16 +24,17 @@ class AddContact extends React.Component {
             avatar: e.target.value
         })
     }
-    onSubmit = (e) => {
-        e.preventDefault();
-        const { name, description, avatar, gender } = this.state;
-        this.props.AddNewContact(name, description, avatar, gender);
-    };
     getGender = (e) => {
         this.setState({
             gender: e.target.value
         })
     }
+    onSubmit = (e) => {
+        e.preventDefault();
+        const { name, description, avatar, gender } = this.state;
+        this.props.AddNewContact(name, description, avatar, gender);
+    };
+    
     render() {
         return (
             <form onSubmit={this.onSubmit}>

@@ -16,7 +16,7 @@ const MainMenu = () => {
                     </li>
                     <li className="nav-item">
                         <Link to="/add" className="nav-link">Add Contact</Link>
-                    </li>
+                    </li>                   
                 </ul>
             </div>
         </nav>

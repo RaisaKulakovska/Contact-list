@@ -3,7 +3,13 @@ import "./contactList.css";
 import ContactItem from "./ContactItem/contactItem";
 import Search from "../SearchComponent/search";
 
-const ContactList = ({ ContactList, onDelete, FavoriteNewF, onEdit}) => {    
+const ContactList = ({ 
+    ContactList, 
+    onDelete, 
+    FavoriteNewF, 
+    GetContactID,
+    EditContact
+    }) => {    
     const ListItem = ContactList.map((item) => {
         return <ContactItem
             key={item.id}
@@ -18,7 +24,9 @@ const ContactList = ({ ContactList, onDelete, FavoriteNewF, onEdit}) => {
             e_mail={item.e_mail}
             onDelete={() => onDelete(item.id)}
             FavoriteNewF={()=>FavoriteNewF(item.id)}
-            favorite={item.favorite} 
+            favorite={item.favorite}
+            GetContactID={()=>GetContactID(item.id)}   
+            EditContact={()=>EditContact(item.id)}          
         >
         </ContactItem>
     })
