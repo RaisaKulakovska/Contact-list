@@ -110,46 +110,41 @@ class App extends Component {
                     favorite: false
                },
           ],
-          singleContactArr: {
-
-          }
+          singleContactArr: []
 
      };
-
-
-     GetContactID = id => {
+     Editor = id => {
+          this.state.Item = [];
           const index = this.state.List.findIndex(elem => elem.id === id);
-          for (let i = 0; i < this.state.List.length; i++) {
-               if (i === index) {
-                    let singleContact = {
-                         id: this.id,
-                         name: this.state.List[i].name,
-                         description: this.state.List[i].description,
-                         avatar: this.state.List[i].avatar,
-                         gender: this.state.List[i].gender,
-                         favorite: this.state.List[i].favorite
-                    };
-                    this.setState({
-                         singleContactArr: singleContact
-                    });
-               }
-          }
-     };
-     EditContact = (id, name, description, avatar, gender) => {
+          const Object = this.state.List[index];
+          this.Object = { id: this.state.List.length * 100 };
+          const NewList = [...this.state.Item, Object];
+          this.state.List.splice(index, 1);
+          this.setState(() => {
+            return {
+              Item: NewList
+            };
+          });
+        };
+      
+        EditContact = (name, description, avatar, gender, id) => {
           const index = this.state.List.findIndex(elem => elem.id === id);
-          const filferedList = this.state.List.filter(item => item.id === !index);
-          console.log(filferedList);
-          const selectedItem = this.state.List.find(item => item.id === index)
-          console.log(selectedItem);
-          this.setState({
-               List: filferedList,
-               // id: selectedItem.id,
-               // name: selectedItem.name,
-               // description: selectedItem.description,
-               // avatar: selectedItem.avatar,
-               // gender: selectedItem.gender
-          })
-     }
+          const Edited = {
+            name: name,
+            description: description,
+            avatar: avatar,
+            gender: gender,
+            favorite: this.state.Item[0].favorite,
+            id: this.state.Item[0].id
+          };
+          console.log(this.state.Item);
+          const NewList = [...this.state.List, Edited];
+          this.setState(() => {
+            return {
+              List: NewList
+            };
+          });
+        };
      onAddNewContact = (name, description, avatar, gender) => {
           this.id++;
           const newContact = {
@@ -167,22 +162,23 @@ class App extends Component {
                }
           })
      }
-     onDelete = (id) => {
+      
+     onDelete = id => {
           const index = this.state.List.findIndex(elem => elem.id === id);
-          let ListNew = [];
+          let NewList = [];
           let counter = 0;
           for (let i = 0; i < this.state.List.length; i++) {
-               if (i !== index) {
-                    ListNew[counter] = this.state.List[i];
-                    counter++;
-               }
+            if (i !== index) {
+              NewList[counter] = this.state.List[i];
+              counter++;
+            }
           }
           this.setState(() => {
-               return {
-                    List: ListNew
-               }
-          })
-     }
+            return {
+              List: NewList
+            };
+          });
+        };
      FavoriteNewF = (id) => {
           const index = this.state.List.findIndex(elem => elem.id === id);
           const ListNew = this.state.List.slice();
@@ -204,6 +200,17 @@ class App extends Component {
                               FavoriteNewF={this.FavoriteNewF}
                          ></ContactList> */}
                          <Switch>
+                         <Route path="/" exact
+                                   component={() => (
+                                        <ContactList
+                                             ContactList={this.state.List}
+                                             onDelete={this.onDelete}
+                                             FavoriteNewF={this.FavoriteNewF}
+                                             GetContactID={this.GetContactID}
+                                             Editor={this.Editor}
+                                        />
+                                   )}
+                              ></Route>
                               <Route path="/about" exact component={About}></Route>
                               <Route path="/add"
                                    exact
@@ -215,24 +222,12 @@ class App extends Component {
                                    exact
                                    component={() => (
                                         <Edit
-                                             EditContact={this.EditContact}
+                                        Editor={this.state.singleContactArr}
+                                        EditContact={this.EditContact}
                                         />
                                    )}>
                               </Route>
-
-                              <Route
-                                   path="/"
-                                   exact
-                                   component={() => (
-                                        <ContactList
-                                             ContactList={this.state.List}
-                                             onDelete={this.onDelete}
-                                             FavoriteNewF={this.FavoriteNewF}
-                                             GetContactID={this.GetContactID}
-                                             EditContact={this.EditContact}
-                                        />
-                                   )}
-                              ></Route>
+                              
                               <Route path="*" exact component={NotFound}></Route>
                          </Switch>
                     </div>

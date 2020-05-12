@@ -5,7 +5,7 @@ class AddContact extends React.Component {
     state = {
         name: "",
         description: "",
-        avatar: null,
+        avatar: "0",
         gender: "",
         favorite: false
     }

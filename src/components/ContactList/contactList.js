@@ -7,8 +7,7 @@ const ContactList = ({
     ContactList, 
     onDelete, 
     FavoriteNewF, 
-    GetContactID,
-    EditContact
+    Editor
     }) => {    
     const ListItem = ContactList.map((item) => {
         return <ContactItem
@@ -25,8 +24,7 @@ const ContactList = ({
             onDelete={() => onDelete(item.id)}
             FavoriteNewF={()=>FavoriteNewF(item.id)}
             favorite={item.favorite}
-            GetContactID={()=>GetContactID(item.id)}   
-            EditContact={()=>EditContact(item.id)}          
+            Editor={() => Editor(item.id)}      
         >
         </ContactItem>
     })
