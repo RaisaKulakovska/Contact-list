@@ -5,10 +5,11 @@ class AddContact extends React.Component {
     state = {
         name: "",
         description: "",
-        avatar: "0",
+        avatar: "null",
         gender: "",
         favorite: false
     }
+    
     getName = (e) => {
         this.setState({
             name: e.target.value
@@ -35,7 +36,7 @@ class AddContact extends React.Component {
         this.props.AddNewContact(name, description, avatar, gender);
     };
     
-    render() {
+    render() {        
         return (
             <form onSubmit={this.onSubmit}>
                 <input

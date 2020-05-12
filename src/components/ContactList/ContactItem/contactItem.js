@@ -65,7 +65,7 @@ class ContactItem extends React.Component {
                         >
                             <div className="media-main">
                                 <a className="pull-left" href="#">
-                                    <img className="thumb-lg img-circle bx-s" src={url} alt="" />
+                                    <img className="thumb-lg img-circle bx-s" src={url} alt="face" />
                                 </a>
                                 <div className="pull-right btn-group-sm">
                                     <Link to="/edit" 

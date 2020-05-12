@@ -52,6 +52,7 @@ class EditContact extends React.Component{
             return(            
                 <form onSubmit={this.onSubmit}
                 >
+                    <label>name</label>
                     <input
                         type="text"
                         name="name"
@@ -59,6 +60,7 @@ class EditContact extends React.Component{
                         onChange={this.editName}
                     />
                     <br />
+                    <label>description</label>
                     <input
                         type="text"
                         name="description"
@@ -66,6 +68,7 @@ class EditContact extends React.Component{
                         onChange={this.editDescrip}
                     />
                     <br />
+                    <label>avatar #</label>
                     <input
                         type="text"
                         name="avatar"
